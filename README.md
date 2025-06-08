@@ -17,6 +17,30 @@ Originally developed as part of an AI Bootcamp project, **Kaggle Data Explorer**
 - 📦 Built using [`uv`](https://github.com/astral-sh/uv) for fast, modern Python dependency management
 
 ---
+## Repo structure
+
+```
+kaggle-data-explorer/
+│
+├── .gitignore
+├── LICENSE
+├── README.md
+├── pyproject.toml
+├── datasets.yaml               # optional config for batch mode
+│
+├── download.py                 # simple CLI utility script
+│
+├── src/                        # source code and modules
+│   └── kaggle_explorer/        # actual Python package namespace
+│       ├── __init__.py
+│       └── downloader.py       # logic to handle API calls
+│
+├── data/                       # default download folder (can be gitignored)
+│
+└── tests/                      # future unit tests (optional)
+    └── test_downloader.py
+```
+---
 
 ## 📂 Project Setup
 
