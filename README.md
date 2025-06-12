@@ -28,13 +28,15 @@ kaggle-data-explorer/
 ├── pyproject.toml
 ├── datasets.yaml               # optional config for batch mode
 │
-├── download.py                 # simple CLI utility script
+├── notebooks/                  # initial ideas and experimentation
+│   └── data/                   # download folder for development (gitignored)
 │
 ├── src/                        # source code and modules
-│   └── kaggle_explorer/        # actual Python package namespace
-│       ├── __init__.py
-│       └── downloader.py       # logic to handle API calls
-│
+│   ├── downloader.py           # logic to handle API calls    
+│   ├── cli.py                  # simple CLI utility script
+│   ├── __init__.py
+│   └── utils/            
+│       └── config.py           # configurations and settings
 ├── data/                       # default download folder (can be gitignored)
 │
 └── tests/                      # future unit tests (optional)
