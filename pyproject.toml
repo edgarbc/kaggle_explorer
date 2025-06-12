@@ -1,7 +1,7 @@
 [project]
 name = "kaggle-explorer"
 version = "0.1.0"
-description = "Add your description here"
+description = "A lightweight CLI utility for downloading and managing Kaggle datasets and competition files with automated organization and environment handling."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
