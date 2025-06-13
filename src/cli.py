@@ -1,8 +1,8 @@
 """Command-line interface for Kaggle dataset operations."""
 import argparse
 from pathlib import Path
-from kaggle_utils.config import load_config
-from kaggle_utils.downloader import download_competition_dataset, download_dataset
+from utils.config import load_config
+from downloader import download_competition_dataset, download_dataset
 
 def main():
     parser = argparse.ArgumentParser(description='Download Kaggle datasets')
@@ -23,8 +23,7 @@ def main():
     if args.type == 'competition':
         download_competition_dataset(
             competition_name=args.name,
-            output_path=args.output,
-            unzip=not args.no_unzip
+            output_path=args.output
         )
     else:
         owner, dataset_name = args.name.split('/')

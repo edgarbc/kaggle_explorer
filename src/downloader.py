@@ -4,11 +4,13 @@ from pathlib import Path
 import os
 from typing import Optional
 from kaggle.api.kaggle_api_extended import KaggleApi
+import zipfile
+
+
 
 def download_competition_dataset(
     competition_name: str,
-    output_path: str,
-    unzip: bool = True
+    output_path: str
 ) -> Path:
     """
     Download a competition dataset from Kaggle.
@@ -16,25 +18,49 @@ def download_competition_dataset(
     Args:
         competition_name: Name of the Kaggle competition
         output_path: Path where to save the dataset
-        unzip: Whether to unzip the downloaded files
         
     Returns:
         Path: Path where the dataset was saved
     """
-    output_path = Path(output_path)
-    output_path.mkdir(parents=True, exist_ok=True)
+    # Get repo root and construct full path
+    repo_root = Path(os.getcwd()).parent
+    full_output_path = Path(repo_root) / output_path
     
+    # Create directory
+    full_output_path.mkdir(parents=True, exist_ok=True)
+    
+    # Initialize and authenticate API
     api = KaggleApi()
     api.authenticate()
     
+    print(f"Downloading competition dataset: {competition_name}")
     api.competition_download_files(
         competition=competition_name,
-        path=str(output_path),
-        quiet=False,
-        unzip=unzip
+        path=str(full_output_path),
+        quiet=False
     )
+    print(f"Dataset downloaded to: {full_output_path}")
+
+    # Get the zip file path
+    zip_path = full_output_path / f"{competition_name}.zip"
+
+    print(f"Zip file path: {zip_path}")
+
+    # Check if the zip file exists
+    if not zip_path.exists():
+        print(f"Zip file {zip_path} does not exist")
+        return full_output_path
+
+    # Unzip the downloaded file
+    if zip_path.exists():
+        print(f"Unzipping {zip_path}")
+        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            zip_ref.extractall(full_output_path)
+        # Optionally remove the zip file after extraction
+        zip_path.unlink()
     
-    return output_path
+    
+    return full_output_path
 
 def download_dataset(
     owner: str,

@@ -12,7 +12,7 @@ def load_config() -> None:
     load_dotenv(env_path)
     
     # Validate required environment variables
-    required_vars = ['KAGGLE_USERNAME', 'KAGGLE_KEY']
+    required_vars = ['KAGGLE_USERNAME', 'KAGGLE_API_KEY']
     missing_vars = [var for var in required_vars if not os.getenv(var)]
     
     if missing_vars:
