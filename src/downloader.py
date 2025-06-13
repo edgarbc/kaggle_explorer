@@ -22,9 +22,9 @@ def download_competition_dataset(
     Returns:
         Path: Path where the dataset was saved
     """
-    # Get repo root and construct full path
-    repo_root = Path(os.getcwd()).parent
-    full_output_path = Path(repo_root) / output_path
+    # Get project root and construct full path
+    project_root = Path(__file__).parent.parent
+    full_output_path = project_root / output_path
     
     # Create directory
     full_output_path.mkdir(parents=True, exist_ok=True)
