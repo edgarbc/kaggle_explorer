@@ -26,7 +26,6 @@ kaggle-data-explorer/
 ├── LICENSE
 ├── README.md
 ├── pyproject.toml
-├── datasets.yaml               # optional config for batch mode
 │
 ├── notebooks/                  # initial ideas and experimentation
 │   └── data/                   # download folder for development (gitignored)
