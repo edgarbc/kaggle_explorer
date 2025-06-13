@@ -97,8 +97,8 @@ Options:
 You can also use the package programmatically:
 
 ```python
-from kaggle_utils.config import load_config
-from kaggle_utils.downloader import download_competition_dataset
+from utils.config import load_config
+from utils.downloader import download_competition_dataset
 
 # Load environment variables
 load_config()
